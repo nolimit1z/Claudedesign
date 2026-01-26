@@ -98,7 +98,7 @@ The flagship feature of v2.0 is the **Design System Generator** - an AI-powered 
 │     • Style recommendations (67 styles)                         │
 │     • Color palette selection (96 palettes)                     │
 │     • Landing page patterns (24 patterns)                       │
-│     • Typography pairing (56 font combinations)                 │
+│     • Typography pairing (57 font combinations)                 │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
@@ -144,10 +144,10 @@ Each rule includes:
 
 - **67 UI Styles** - Glassmorphism, Claymorphism, Minimalism, Brutalism, Neumorphism, Bento Grid, Dark Mode, AI-Native UI, and more
 - **96 Color Palettes** - Industry-specific palettes for SaaS, E-commerce, Healthcare, Fintech, Beauty, etc.
-- **56 Font Pairings** - Curated typography combinations with Google Fonts imports
+- **57 Font Pairings** - Curated typography combinations with Google Fonts imports
 - **25 Chart Types** - Recommendations for dashboards and analytics
 - **13 Tech Stacks** - React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose
-- **98 UX Guidelines** - Best practices, anti-patterns, and accessibility rules
+- **99 UX Guidelines** - Best practices, anti-patterns, and accessibility rules
 - **100 Reasoning Rules** - Industry-specific design system generation (NEW in v2.0)
 
 ### Available Styles (67)
@@ -309,7 +309,9 @@ winget install Python.Python.3.12
 
 ## Usage
 
-### Claude Code
+### Skill Mode (Auto-activate)
+
+**Supported:** Claude Code, Windsurf, Antigravity, Codex CLI, Continue, Gemini CLI, OpenCode, Qoder, CodeBuddy
 
 The skill activates automatically when you request UI/UX work. Just chat naturally:
 
@@ -317,94 +319,16 @@ The skill activates automatically when you request UI/UX work. Just chat natural
 Build a landing page for my SaaS product
 ```
 
-### Cursor / Windsurf / Antigravity
+> **Trae**: Switch to **SOLO** mode first. The skill will activate for UI/UX requests.
+
+### Workflow Mode (Slash Command)
+
+**Supported:** Cursor, Kiro, GitHub Copilot, Roo Code
 
 Use the slash command to invoke the skill:
 
 ```
 /ui-ux-pro-max Build a landing page for my SaaS product
-```
-
-### Kiro
-
-Type `/` in chat to see available commands, then select `ui-ux-pro-max`:
-
-```
-/ui-ux-pro-max Build a landing page for my SaaS product
-```
-
-### GitHub Copilot
-
-In VS Code with Copilot, type `/` in chat to see available prompts, then select `ui-ux-pro-max`:
-
-```
-/ui-ux-pro-max Build a landing page for my SaaS product
-```
-
-### Codex CLI
-
-The skill activates automatically for UI/UX requests. You can also invoke it explicitly:
-
-```
-$ui-ux-pro-max Build a landing page for my SaaS product
-```
-
-### Continue
-
-The skill activates automatically for UI/UX requests once installed to `.continue/skills/`:
-
-```
-Build a landing page for my SaaS product
-```
-
-### Qoder
-
-The skill activates automatically when you request UI/UX work:
-
-```
-Build a landing page for my SaaS product
-```
-
-### Roo Code
-
-The skill activates automatically when you request UI/UX work:
-
-```
-Build a landing page for my SaaS product
-```
-
-### Gemini CLI
-
-The skill activates automatically when you request UI/UX work:
-
-```
-Build a landing page for my SaaS product
-```
-
-### Trae
-
-_Disclaimer: Trae skill is in beta. Please report any issues or feedback._
-
-To use Trae skill, you need to switch to **SOLO** mode. If your request is related to skills, skills will be used:
-
-```
-Build a landing page (frontend ONLY) for my SaaS product.
-```
-
-### OpenCode
-
-The skill activates automatically when you request UI/UX work:
-
-```
-Build a landing page for my SaaS product
-```
-
-### CodeBuddy
-
-The skill activates automatically when you request UI/UX work:
-
-```
-Build a landing page for my SaaS product
 ```
 
 ### Example Prompts
