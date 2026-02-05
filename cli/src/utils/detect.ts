@@ -52,6 +52,9 @@ export function detectAIType(cwd: string = process.cwd()): DetectionResult {
   if (existsSync(join(cwd, '.codebuddy'))) {
     detected.push('codebuddy');
   }
+  if (existsSync(join(cwd, '.iflow'))) {
+    detected.push('iflow');
+  }
 
   // Suggest based on what's detected
   let suggested: AIType | null = null;
@@ -69,23 +72,23 @@ export function getAITypeDescription(aiType: AIType): string {
     case 'claude':
       return 'Claude Code (.claude/skills/)';
     case 'cursor':
-      return 'Cursor (.cursor/skills/)';
+      return 'Cursor (.cursor/commands/ + .shared/)';
     case 'windsurf':
-      return 'Windsurf (.windsurf/skills/)';
+      return 'Windsurf (.windsurf/skills/ + .shared/)';
     case 'antigravity':
       return 'Antigravity (.agent/skills/)';
     case 'copilot':
-      return 'GitHub Copilot (.github/prompts/)';
+      return 'GitHub Copilot (.github/prompts/ + .shared/)';
     case 'kiro':
-      return 'Kiro (.kiro/steering/)';
+      return 'Kiro (.kiro/steering/ + .shared/)';
     case 'codex':
       return 'Codex (.codex/skills/)';
     case 'roocode':
-      return 'RooCode (.roo/skills/)';
+      return 'RooCode (.roo/commands/ + .shared/)';
     case 'qoder':
-      return 'Qoder (.qoder/skills/)';
+      return 'Qoder (.qoder/rules/ + .shared/)';
     case 'gemini':
-      return 'Gemini CLI (.gemini/skills/)';
+      return 'Gemini CLI (.gemini/skills/ + .shared/)';
     case 'trae':
       return 'Trae (.trae/skills/)';
     case 'opencode':
@@ -94,6 +97,8 @@ export function getAITypeDescription(aiType: AIType): string {
       return 'Continue (.continue/skills/)';
     case 'codebuddy':
       return 'CodeBuddy (.codebuddy/skills/)';
+    case 'iflow':
+      return 'iFlow CLI (.iflow/skills/)';
     case 'all':
       return 'All AI assistants';
   }

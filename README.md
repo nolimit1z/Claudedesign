@@ -278,6 +278,7 @@ uipro init --ai trae        # Trae
 uipro init --ai opencode    # OpenCode
 uipro init --ai continue    # Continue
 uipro init --ai codebuddy   # CodeBuddy
+uipro init --ai iflow       # iFlow CLI
 uipro init --ai all         # All assistants
 ```
 
@@ -311,7 +312,7 @@ winget install Python.Python.3.12
 
 ### Skill Mode (Auto-activate)
 
-**Supported:** Claude Code, Cursor, Windsurf, Antigravity, Codex CLI, Continue, Gemini CLI, OpenCode, Qoder, CodeBuddy
+**Supported:** Claude Code, Cursor, Windsurf, Antigravity, Codex CLI, Continue, Gemini CLI, OpenCode, Qoder, CodeBuddy, iFlow CLI
 
 The skill activates automatically when you request UI/UX work. Just chat naturally:
 
