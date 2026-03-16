@@ -1,12 +1,13 @@
 import chalk from 'chalk';
 import ora from 'ora';
-import { getLatestRelease } from '../utils/github.js';
+import { getLatestRelease, GitHubRateLimitError } from '../utils/github.js';
 import { logger } from '../utils/logger.js';
 import { initCommand } from './init.js';
 import type { AIType } from '../types/index.js';
 
 interface UpdateOptions {
   ai?: AIType;
+  githubToken?: string;
 }
 
 export async function updateCommand(options: UpdateOptions): Promise<void> {
@@ -15,7 +16,7 @@ export async function updateCommand(options: UpdateOptions): Promise<void> {
   const spinner = ora('Checking for updates...').start();
 
   try {
-    const release = await getLatestRelease();
+    const release = await getLatestRelease({ token: options.githubToken });
     spinner.succeed(`Latest version: ${chalk.cyan(release.tag_name)}`);
 
     console.log();
@@ -25,9 +26,14 @@ export async function updateCommand(options: UpdateOptions): Promise<void> {
     await initCommand({
       ai: options.ai,
       force: true,
+      githubToken: options.githubToken,
     });
   } catch (error) {
     spinner.fail('Update check failed');
+    if (error instanceof GitHubRateLimitError) {
+      logger.error(error.message);
+      process.exit(1);
+    }
     if (error instanceof Error) {
       logger.error(error.message);
     }

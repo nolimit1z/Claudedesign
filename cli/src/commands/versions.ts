@@ -1,13 +1,17 @@
 import chalk from 'chalk';
 import ora from 'ora';
-import { fetchReleases } from '../utils/github.js';
+import { fetchReleases, GitHubRateLimitError } from '../utils/github.js';
 import { logger } from '../utils/logger.js';
 
-export async function versionsCommand(): Promise<void> {
+interface VersionsOptions {
+  githubToken?: string;
+}
+
+export async function versionsCommand(options: VersionsOptions = {}): Promise<void> {
   const spinner = ora('Fetching available versions...').start();
 
   try {
-    const releases = await fetchReleases();
+    const releases = await fetchReleases({ token: options.githubToken });
 
     if (releases.length === 0) {
       spinner.warn('No releases found');
@@ -34,6 +38,10 @@ export async function versionsCommand(): Promise<void> {
     logger.dim('Use: uipro init --version <tag> to install a specific version');
   } catch (error) {
     spinner.fail('Failed to fetch versions');
+    if (error instanceof GitHubRateLimitError) {
+      logger.error(error.message);
+      process.exit(1);
+    }
     if (error instanceof Error) {
       logger.error(error.message);
     }

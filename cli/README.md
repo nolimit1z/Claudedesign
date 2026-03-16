@@ -28,17 +28,28 @@ uipro init --ai continue    # Continue (Skills)
 uipro init --ai all         # All assistants
 
 # Options
-uipro init --offline        # Skip GitHub download, use bundled assets only
-uipro init --force          # Overwrite existing files
+uipro init --offline                    # Skip GitHub download, use bundled assets only
+uipro init --force                      # Overwrite existing files
+uipro init --token <token>       # Optional GitHub token to avoid API rate limits
 
 # Other commands
-uipro versions              # List available versions
-uipro update                # Update to latest version
+uipro versions --token <token>   # List available versions (optional token)
+uipro update --token <token>     # Update to latest version (optional token)
+
+# Env var
+export UI_PRO_MAX_GITHUB_TOKEN=github_xxx
 ```
+
+## Where to get a token
+
+Create a Personal Access Token in GitHub:
+
+- GitHub → **Settings** → **Developer settings** → **Personal access tokens**
+- Recommended: create a token with the minimum scopes you need (for public repo release reads, no extra scopes are typically required).
 
 ## How It Works
 
-By default, `uipro init` tries to download the latest release from GitHub to ensure you get the most up-to-date version. If the download fails (network error, rate limit), it automatically falls back to the bundled assets included in the CLI package.
+By default, `uipro init` uses template generation locally. In ZIP download mode (`--legacy`), it tries to download the latest release from GitHub, and if that fails (network error, rate limit), it automatically falls back to the bundled assets included in the CLI package. If you hit GitHub rate limits, pass optional `--token` or set `UI_PRO_MAX_GITHUB_TOKEN`.
 
 Use `--offline` to skip the GitHub download and use bundled assets directly.
 

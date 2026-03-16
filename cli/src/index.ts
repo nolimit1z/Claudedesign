@@ -25,6 +25,7 @@ program
   .command('init')
   .description('Install UI/UX Pro Max skill to current project')
   .option('-a, --ai <type>', `AI assistant type (${AI_TYPES.join(', ')})`)
+  .option('--token <token>', 'GitHub token to avoid API rate limits (optional)')
   .option('-f, --force', 'Overwrite existing files')
   .option('-o, --offline', 'Skip GitHub download, use bundled assets only')
   .action(async (options) => {
@@ -37,18 +38,25 @@ program
       ai: options.ai as AIType | undefined,
       force: options.force,
       offline: options.offline,
+      githubToken: options.token,
     });
   });
 
 program
   .command('versions')
   .description('List available versions')
-  .action(versionsCommand);
+  .option('--token <token>', 'GitHub token to avoid API rate limits (optional)')
+  .action(async (options) => {
+    await versionsCommand({
+      githubToken: options.token,
+    });
+  });
 
 program
   .command('update')
   .description('Update UI/UX Pro Max to latest version')
   .option('-a, --ai <type>', `AI assistant type (${AI_TYPES.join(', ')})`)
+  .option('--token <token>', 'GitHub token to avoid API rate limits (optional)')
   .action(async (options) => {
     if (options.ai && !AI_TYPES.includes(options.ai)) {
       console.error(`Invalid AI type: ${options.ai}`);
@@ -57,6 +65,7 @@ program
     }
     await updateCommand({
       ai: options.ai as AIType | undefined,
+      githubToken: options.token,
     });
   });
 

@@ -293,10 +293,21 @@ uipro init --ai all         # All assistants
 ### Other CLI Commands
 
 ```bash
-uipro versions              # List available versions
-uipro update                # Update to latest version
-uipro init --offline        # Skip GitHub download, use bundled assets
+uipro versions --token <token>  # List available versions with token (optional)
+uipro update --token <token>    # Update to latest version with token (optional)
+uipro init --offline                   # Skip GitHub download, use bundled assets
+
+# Or set env var once
+export UI_PRO_MAX_GITHUB_TOKEN=github_xxx
 ```
+
+**Where to get a token**
+
+Create a Personal Access Token in GitHub:
+
+- GitHub → **Settings** → **Developer settings** → **Personal access tokens**
+- Recommended: create a token with the minimum scopes you need (for public repo release reads, no extra scopes are typically required).
+
 
 ## Prerequisites
 
