@@ -19,7 +19,7 @@ export function detectAIType(cwd: string = process.cwd()): DetectionResult {
   if (existsSync(join(cwd, '.windsurf'))) {
     detected.push('windsurf');
   }
-  if (existsSync(join(cwd, '.agent'))) {
+  if (existsSync(join(cwd, '.agents')) || existsSync(join(cwd, '.agent'))) {
     detected.push('antigravity');
   }
   if (existsSync(join(cwd, '.github'))) {
