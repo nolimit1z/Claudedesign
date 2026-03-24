@@ -7,7 +7,7 @@ Usage: python search.py "<query>" [--domain <domain>] [--stack <stack>] [--max-r
        python search.py "<query>" --design-system --persist [-p "Project Name"] [--page "dashboard"]
 
 Domains: style, prompt, color, chart, landing, product, ux, typography, google-fonts
-Stacks: html-tailwind, react, nextjs
+Stacks: astro, flutter, html-tailwind, jetpack-compose, nextjs, nuxt-ui, nuxtjs, react, react-native, shadcn, svelte, swiftui, vue
 
 Persistence (Master + Overrides pattern):
   --persist    Save design system to design-system/MASTER.md
