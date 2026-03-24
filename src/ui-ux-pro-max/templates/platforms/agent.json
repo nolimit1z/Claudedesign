@@ -3,7 +3,7 @@
   "displayName": "Antigravity / Generic Agent",
   "installType": "full",
   "folderStructure": {
-    "root": ".agent",
+    "root": ".agents",
     "skillPath": "skills/ui-ux-pro-max",
     "filename": "SKILL.md"
   },
