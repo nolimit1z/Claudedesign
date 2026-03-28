@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossiê Preliminar de Viabilidade — One Pager</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #08090a;
+    --orange: #f97316;
+    --orange2: #fb923c;
+    --green: #22c55e;
+    --text: #f4f4f5;
+    --muted: #71717a;
+    --card-bg: #111113;
+    --border: #222226;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Instrument Sans', sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+  /* ─── HERO ─────────────────────────── */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 80px 72px 72px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -80px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(249,115,22,.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--orange);
+    border: 1px solid rgba(249,115,22,.35);
+    background: rgba(249,115,22,.08);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .hero-tag::before { content: '●'; font-size: 7px; }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 7vw, 88px);
+    line-height: .95;
+    letter-spacing: .01em;
+    max-width: 820px;
+    color: var(--text);
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--orange);
+  }
+  .hero-sub {
+    margin-top: 24px;
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.65;
+  }
+  .hero-sub strong { color: var(--text); font-weight: 600; }
+  .hero-stats {
+    display: flex;
+    gap: 0;
+    margin-top: 52px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 680px;
+    background: var(--card-bg);
+  }
+  .hero-stat {
+    flex: 1;
+    padding: 22px 28px;
+    border-right: 1px solid var(--border);
+  }
+  .hero-stat:last-child { border-right: none; }
+  .hero-stat .s-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    line-height: 1;
+    color: var(--orange);
+    margin-bottom: 5px;
+  }
+  .hero-stat .s-val.green { color: var(--green); }
+  .hero-stat .s-lbl { font-size: 12px; color: var(--muted); font-weight: 500; }
+  /* ─── WHAT IS ─── */
+  .what-is {
+    padding: 72px 72px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-tag {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+  .what-is h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: .02em;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+  .what-is p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .what-is p strong { color: var(--text); }
+  .what-is-right { display: flex; flex-direction: column; gap: 16px; padding-top: 48px; }
+  .wi-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .wi-icon { font-size: 22px; flex-shrink: 0; line-height: 1.2; }
+  .wi-card h4 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .wi-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  /* ─── MODULES ─── */
+  .modules {
+    padding: 72px 72px;
+    border-bottom: 1px solid var(--border);
+  }
+  .modules-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+  }
+  .modules-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: .02em;
+  }
+  .modules-header p { color: var(--muted); font-size: 14px; max-width: 340px; text-align: right; }
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .mod-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    transition: border-color .2s;
+  }
+  .mod-card:hover { border-color: rgba(249,115,22,.4); }
+  .mod-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    color: var(--orange);
+    letter-spacing: .08em;
+    margin-bottom: 10px;
+    opacity: .7;
+  }
+  .mod-card h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .mod-card p { font-size: 12px; color: var(--muted); line-height: 1.55; }
+  .mod-badge {
+    position: absolute;
+    top: 16px; right: 16px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 3px 8px;
+    border-radius: 20px;
+    background: var(--green-dim);
+    color: var(--green);
+    background: rgba(34,197,94,.1);
+    border: 1px solid rgba(34,197,94,.25);
+  }
+  /* ─── VALUE PROP ─── */
+  .value-prop {
+    padding: 72px 72px;
+    background: linear-gradient(135deg, #0f0f11 0%, #111115 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .value-prop h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: .02em;
+    margin-bottom: 8px;
+  }
+  .value-prop .vp-sub { color: var(--muted); font-size: 15px; margin-bottom: 40px; }
+  .vp-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .vp-card {
+    border-radius: 12px;
+    padding: 28px 24px;
+    border: 1px solid var(--border);
+    background: rgba(249,115,22,.04);
+    border-color: rgba(249,115,22,.15);
+  }
+  .vp-card .vp-label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+  .vp-card .vp-val-old { font-size: 13px; color: var(--muted); text-decoration: line-through; margin-bottom: 4px; }
+  .vp-card .vp-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    line-height: 1.1;
+    color: var(--orange);
+    margin-bottom: 6px;
+  }
+  .vp-card .vp-val.green { color: var(--green); }
+  .vp-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  /* ─── FOR WHO ─── */
+  .for-who {
+    padding: 72px 72px;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .for-who h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: .02em;
+  }
+  .for-who > p { color: var(--muted); font-size: 15px; margin-top: 12px; line-height: 1.7; }
+  .fw-list { display: flex; flex-direction: column; gap: 12px; padding-top: 12px; }
+  .fw-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .fw-item .fw-icon { font-size: 20px; flex-shrink: 0; }
+  .fw-item h4 { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+  .fw-item p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  /* ─── CTA ─── */
+  .cta {
+    padding: 80px 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta::before {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(249,115,22,.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-left h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: .95;
+    letter-spacing: .01em;
+    margin-bottom: 16px;
+  }
+  .cta-left h2 em { font-style: normal; color: var(--orange); }
+  .cta-left p { color: var(--muted); font-size: 15px; max-width: 460px; line-height: 1.7; }
+  .cta-right { flex-shrink: 0; display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
+  .btn-primary {
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 16px 36px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: .02em;
+    transition: background .2s, transform .15s;
+  }
+  .btn-primary:hover { background: var(--orange2); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 13px 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: border-color .2s, color .2s;
+  }
+  .btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+  .cta-note { font-size: 11px; color: #444; text-align: right; }
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 28px 72px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #444;
+  }
+  footer strong { color: var(--orange); }
+</style>
+</head>
+<body>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Dossiê Preliminar de Viabilidade</div>
+  <h1>Seu terreno<br>vale <em>muito mais</em><br>do que você pensa.</h1>
+  <p class="hero-sub">
+    Em minutos, descubra o <strong>potencial imobiliário real</strong> do seu terreno — com estudo de massa, análise de mercado, cenários de negociação e valoração estruturada gerada por inteligência artificial.
+  </p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="s-val">11</div>
+      <div class="s-lbl">Módulos de análise</div>
+    </div>
+    <div class="hero-stat">
+      <div class="s-val green">Minutos</div>
+      <div class="s-lbl">Para gerar o dossiê</div>
+    </div>
+    <div class="hero-stat">
+      <div class="s-val">R$60k+</div>
+      <div class="s-lbl">Equivalente em consultoria</div>
+    </div>
+    <div class="hero-stat">
+      <div class="s-val green">250%+</div>
+      <div class="s-lbl">Ganho médio de valoração</div>
+    </div>
+  </div>
+</section>
+<!-- WHAT IS -->
+<section class="what-is">
+  <div>
+    <div class="section-tag">O que é</div>
+    <h2>INTELIGÊNCIA<br>IMOBILIÁRIA<br>COMPLETA</h2>
+    <p>
+      O <strong>Dossiê Preliminar de Viabilidade</strong> é o estudo técnico mais completo que existe para quem vai negociar, incorporar ou estruturar um terreno urbano.
+    </p>
+    <p>
+      Ele vai além do simples valor de mercado por m²: mostra quanto o terreno vale <strong>estruturado como produto imobiliário</strong>, quem é o comprador, como está a concorrência, quanto custa construir, qual o retorno esperado e quais os melhores cenários de negociação.
+    </p>
+    <p>
+      Tudo isso com dados oficiais de zoneamento, benchmarks reais de concorrentes e análise estratégica gerada por IA — em um único documento, compartilhável e exportável.
+    </p>
+  </div>
+  <div class="what-is-right">
+    <div class="wi-card">
+      <div class="wi-icon">📋</div>
+      <div>
+        <h4>Dados Oficiais de Zoneamento</h4>
+        <p>Legislação urbanística consultada via API oficial, com alta confiança e atualização automática.</p>
+      </div>
+    </div>
+    <div class="wi-card">
+      <div class="wi-icon">🤖</div>
+      <div>
+        <h4>Análise por Inteligência Artificial</h4>
+        <p>IA analisa padrão do bairro, vocação de mercado, risco de precificação e estratégia recomendada.</p>
+      </div>
+    </div>
+    <div class="wi-card">
+      <div class="wi-icon">🔄</div>
+      <div>
+        <h4>Recálculo Dinâmico</h4>
+        <p>Altere o preço/m² proposto e todos os indicadores se recalculam instantaneamente.</p>
+      </div>
+    </div>
+    <div class="wi-card">
+      <div class="wi-icon">📤</div>
+      <div>
+        <h4>Exportável e Compartilhável</h4>
+        <p>Compartilhe o link do dossiê com incorporadores, sócios ou clientes. Exporte seções individualmente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- MODULES -->
+<section class="modules">
+  <div class="modules-header">
+    <div>
+      <div class="section-tag">O que está incluso</div>
+      <h2>11 MÓDULOS<br>DE ANÁLISE</h2>
+    </div>
+    <p>Cada módulo substitui um serviço que normalmente levaria dias ou semanas para ser entregue por um profissional especializado.</p>
+  </div>
+  <div class="modules-grid">
+    <div class="mod-card">
+      <div class="mod-num">01 —</div>
+      <h4>Classificação de Padrão por IA</h4>
+      <p>Análise automática do padrão socioeconômico e construtivo do entorno — baixo, médio ou alto padrão.</p>
+      <div class="mod-badge">Instantâneo</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-num">02 —</div>
+      <h4>Zoneamento Urbanístico Completo</h4>
+      <p>Zona, CA, taxa de ocupação, gabarito, recuos, usos permitidos via API de legislação oficial.</p>
+      <div class="mod-badge">Dados Oficiais</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-num">03 —</div>
+      <h4>Análise Vocacional de Mercado</h4>
+      <p>Score 0–100 que valida se existe demanda real para o produto proposto no perfil e preço indicados.</p>
+      <div class="mod-badge">Score IA</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-num">04 —</div>
+      <h4>Mapeamento de Concorrentes</h4>
+      <p>Empreendimentos ativos na região com preço/m², tipologia e status — mapeados automaticamente.</p>
+      <div class="mod-badge">Tempo Real</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-num">05 —</div>
+      <h4>Validação de Preço</h4>
+      <p>Compara o preço/m² proposto com a média da concorrência e sinaliza risco ou compatibilidade.</p>
+      <div class="mod-badge">Instantâneo</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-num">06 —</div>
+      <h4>Perfil da Demanda Local</h4>
+      <p>Famílias na área, % em aluguel, renda média, classes sociais, score de centralidade urbana.</p>
+      <div class="mod-badge">Dados IBGE</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-num">07 —</div>
+      <h4>Estudo Comercial e Persona</h4>
+      <p>Perfil demográfico do comprador típico, faixa etária, interesses, fatores de decisão e canais de comunicação eficazes.</p>
+      <div class="mod-badge">IA + Dados</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-num">08 —</div>
+      <h4>Estudo de Massa Completo</h4>
+      <p>Quadro de áreas profissional: área construída, privativa, garagem, lazer, eficiência e unidades por andar.</p>
+      <div class="mod-badge">Completo</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-num">09 —</div>
+      <h4>Viabilidade Financeira</h4>
+      <p>VGV estimado, custo de construção por CUB, margem sobre VGV e ROI estimado sobre o investimento.</p>
+      <div class="mod-badge">Completo</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-num">10 —</div>
+      <h4>Visualização Arquitetônica IA</h4>
+      <p>Renders gerados por IA com base no estudo de massa e satélite real: vista frontal e vista aérea.</p>
+      <div class="mod-badge">IA Generativa</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-num">11 —</div>
+      <h4>Cenários de Negociação</h4>
+      <p>Valor bruto, venda estruturada à vista, permuta financeira e permuta física — com comparativo final.</p>
+      <div class="mod-badge">3 Cenários</div>
+    </div>
+  </div>
+</section>
+<!-- VALUE PROP -->
+<section class="value-prop">
+  <div class="section-tag">A diferença que faz</div>
+  <h2>ESTRUTURAR MUDA TUDO</h2>
+  <p class="vp-sub">Veja o que acontece com o valor do terreno quando você entra numa negociação com o dossiê na mão.</p>
+  <div class="vp-grid">
+    <div class="vp-card">
+      <div class="vp-label">Sem estruturação</div>
+      <div class="vp-val-old">Valor bruto</div>
+      <div class="vp-val">R$ X</div>
+      <p>Baseado apenas em metragem de terra. Sem potencial construtivo. Sem argumento de negociação.</p>
+    </div>
+    <div class="vp-card">
+      <div class="vp-label">Venda à vista estruturada</div>
+      <div class="vp-val green">+150 a 350%</div>
+      <p>10% sobre o VGV projetado. Com o dossiê, você sabe exatamente quanto pedir — e como justificar.</p>
+    </div>
+    <div class="vp-card">
+      <div class="vp-label">Permuta Financeira</div>
+      <div class="vp-val green">11% do VGV</div>
+      <p>Participação financeira proporcional ao resultado do empreendimento. Risco compartilhado com o incorporador.</p>
+    </div>
+    <div class="vp-card">
+      <div class="vp-label">Permuta Física</div>
+      <div class="vp-val green">12% do VGV</div>
+      <p>Unidades prontas no empreendimento. Maior retorno potencial, com liquidez no longo prazo.</p>
+    </div>
+  </div>
+</section>
+<!-- FOR WHO -->
+<section class="for-who">
+  <div>
+    <div class="section-tag">Para quem é</div>
+    <h2>QUEM USA<br>O DOSSIÊ</h2>
+    <p>Qualquer pessoa que vai negociar, estruturar ou tomar uma decisão sobre um terreno urbano precisa dessas informações antes de sentar à mesa.</p>
+  </div>
+  <div class="fw-list">
+    <div class="fw-item">
+      <div class="fw-icon">🏠</div>
+      <div>
+        <h4>Proprietários de Terreno</h4>
+        <p>Descubra quanto seu terreno realmente vale antes de receber uma oferta — e chegue à negociação com dados, não com achismo.</p>
+      </div>
+    </div>
+    <div class="fw-item">
+      <div class="fw-icon">🏗️</div>
+      <div>
+        <h4>Incorporadores e Construtoras</h4>
+        <p>Avalie terrenos em minutos antes de decidir se vale a pena abrir um processo formal de análise. Elimine oportunidades ruins mais rápido.</p>
+      </div>
+    </div>
+    <div class="fw-item">
+      <div class="fw-icon">🤝</div>
+      <div>
+        <h4>Corretores e Brokers</h4>
+        <p>Entregue mais valor ao proprietário na captação e ao incorporador na prospecção. O dossiê é seu diferencial competitivo na mesa.</p>
+      </div>
+    </div>
+    <div class="fw-item">
+      <div class="fw-icon">💼</div>
+      <div>
+        <h4>Investidores Imobiliários</h4>
+        <p>Compare oportunidades, valide viabilidade e entenda o potencial de retorno antes de qualquer comprometimento de capital.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-left">
+    <h2>Pronto para saber<br>quanto seu terreno<br>realmente <em>vale?</em></h2>
+    <p>
+      Gere o dossiê em minutos, compare cenários de negociação e chegue à mesa de negociação com os números certos — antes de qualquer outra parte.
+    </p>
+  </div>
+  <div class="cta-right">
+    <a href="#" class="btn-primary">Gerar meu Dossiê agora</a>
+    <a href="#" class="btn-secondary">Ver exemplo de dossiê</a>
+    <div class="cta-note">Dados oficiais · Análise por IA · Resultado em minutos</div>
+  </div>
+</section>
+<footer>
+  <div><strong>Incorporação Digital</strong> · powered by AGREGA</div>
+  <div>Dossiê Preliminar de Viabilidade — Potencial Imobiliário do Terreno</div>
+</footer>
+</body>
+</html>
